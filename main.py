@@ -19,7 +19,7 @@ game_over = False
 
 while not game_over:
 
-    valor_tasa = tasa_refresco.tick(60)
+    valor_tasa = tasa_refresco.tick(260)
 
     for evento in pg.event.get():
         if evento.type == pg.QUIT:
