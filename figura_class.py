@@ -1,5 +1,19 @@
 import pygame as pg
 
+"""
+class Marcador:
+    def __init__(self,pos_x,pos_y,color=(0,0,0),w=10,h=10): 
+        self.pos_x=pos_x
+        self.pos_y=pos_y
+        self.color=color
+        self.w=w
+        self.h=h
+
+    def dibujar(self,pantalla):
+        pg.draw.rect(pantalla,self.color,self.pos_x,self.pos_y,self.w,self.h)
+
+"""
+
 class Raqueta:
      def __init__(self,pos_x,pos_y,color=(255,255,255),w=20,h=120,vx=1,vy=1):
         self.pos_x= pos_x
@@ -21,9 +35,6 @@ class Raqueta:
 
          if estado_teclado[tecla_abajo] == True and self.pos_y < y_max-(self.h//2):
              self.pos_y +=3
-               
-
-
 
 
 

@@ -15,6 +15,8 @@ pelota = Pelota(400,300)
 raqueta1 = Raqueta(10,300)
 raqueta2 = Raqueta(790,300)
 
+
+
 game_over = False
 
 while not game_over:
@@ -34,11 +36,16 @@ while not game_over:
 
     pantalla_principal.fill((0,128,94))
     pg.draw.line(pantalla_principal,(255,255,255),(400,0),(400,600),10)
+    
+    """
+    pg.draw.rect(pantalla_principal,(0,0,0),(133,20),10)
+    """
+
 
     pelota.dibujar(pantalla_principal)
     raqueta1.dibujar(pantalla_principal)
     raqueta2.dibujar(pantalla_principal)
-
+   
 
     pg.display.flip()
 
