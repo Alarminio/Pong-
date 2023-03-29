@@ -13,9 +13,22 @@ class Raqueta:
      def dibujar(self,pantalla):
         pg.draw.rect(pantalla, self.color,(self.pos_x-(self.w//2),self.pos_y-(self.h//2),self.w,self.h))
 
+     def mover(self,tecla_arriba,tecla_abajo,y_max=600,y_min=0):
+         estado_teclado = pg.key.get_pressed()
+
+         if estado_teclado[tecla_arriba] == True and self.pos_y > y_min+(self.h//2):
+             self.pos_y -=3
+
+         if estado_teclado[tecla_abajo] == True and self.pos_y < y_max-(self.h//2):
+             self.pos_y +=3
+               
+
+
+
+
 
 class Pelota:
-    def __init__(self,pos_x,pos_y,color=(255,255,255),radio=20,vx=1,vy=1):
+    def __init__(self,pos_x,pos_y,color=(255,255,255),radio=20,vx=5,vy=5):
          self.pos_x=pos_x
          self.pos_y=pos_y
          self.color=color
@@ -33,27 +46,17 @@ class Pelota:
         self.pos_x += self.vx
         self.pos_y += self.vy
 
-        if self.pos_x >= x_max-self.radio or self.pos_x < 0+self.radio:
-            self.vx *= -1
+        if self.pos_y >= y_max-self.radio or self.pos_y < 0+self.radio:
+            self.vy *= -1
 
         if self.pos_x >= x_max+self.radio*5:
             self.vx *= -1
             self.contadorIzquierdo +=1
 
-        if self.pos_y < 0-self.radio:
-            self.vy *= -1
+        if self.pos_x < 0-self.radio*5:
+            self.vx *= -1
             self.contadorDerecho +=1
 
-
-
-    def mover(self,tecla_arriba,tecla_abajo,y_max=600,y_min=0):
-        estado_teclado = pg.key.get_pressed()
-
-        if estado_teclado[tecla_arriba] == True and self.pos_y > y_min+(self.h//2):
-            self.pos_y -=3
-
-        if estado_teclado[tecla_abajo] == True and self.pos_y < y_max-(self.h//2):
-            self.pos_y +=3   
 
 
     

@@ -12,8 +12,8 @@ tasa_refresco = pg.time.Clock()
 
 
 pelota = Pelota(400,300)
-raqueta1 = Raqueta(10,300-(120//2))
-raqueta2 = Raqueta(790 - 20,300-(120//2))
+raqueta1 = Raqueta(10,300)
+raqueta2 = Raqueta(790,300)
 
 game_over = False
 
@@ -25,6 +25,11 @@ while not game_over:
         if evento.type == pg.QUIT:
             game_over = True
 
+    raqueta1.mover(pg.K_w,pg.K_s)
+    raqueta2.mover(pg.K_UP,pg.K_DOWN)
+    pelota.mover()
+    print("punto Derecho:",pelota.contadorDerecho)
+    print("punto Izquierdo:",pelota.contadorIzquierdo)
 
 
     pantalla_principal.fill((0,128,94))
