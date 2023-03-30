@@ -9,6 +9,8 @@ pantalla_principal = pg.display.set_mode((800,600))
 pg.display.set_caption("pong")
 tasa_refresco = pg.time.Clock()
 
+fuente = pg.font.Font(None, 30)
+
 
 
 pelota = Pelota(400,300)
@@ -30,8 +32,11 @@ while not game_over:
     raqueta1.mover(pg.K_w,pg.K_s)
     raqueta2.mover(pg.K_UP,pg.K_DOWN)
     pelota.mover()
-    print("punto Derecho:",pelota.contadorDerecho)
-    print("punto Izquierdo:",pelota.contadorIzquierdo)
+    #print("punto Derecho:",pelota.contadorDerecho)
+    #print("punto Izquierdo:",pelota.contadorIzquierdo)
+
+    jugador1 = fuente.render(str(pelota.contadorDerecho),0,(255,255,255))
+    jugador2 = fuente.render(str(pelota.contadorIzquierdo),0,(255,255,255))
 
 
     pantalla_principal.fill((0,128,94))
@@ -46,7 +51,9 @@ while not game_over:
     raqueta1.dibujar(pantalla_principal)
     raqueta2.dibujar(pantalla_principal)
    
-
+    pelota.mostrar_marcador(pantalla_principal)
+   
+   
     pg.display.flip()
 
 pg.quit()

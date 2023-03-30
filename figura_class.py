@@ -31,10 +31,10 @@ class Raqueta:
          estado_teclado = pg.key.get_pressed()
 
          if estado_teclado[tecla_arriba] == True and self.pos_y > y_min+(self.h//2):
-             self.pos_y -=3
+             self.pos_y -=1
 
          if estado_teclado[tecla_abajo] == True and self.pos_y < y_max-(self.h//2):
-             self.pos_y +=3
+             self.pos_y +=1
 
 
 
@@ -51,7 +51,7 @@ class Pelota:
 
 
     def dibujar(self,pantalla):
-         pg.draw.circle(pantalla,self.color,(self.pos_x,self.pos_y),self.radio)
+         pg.draw.circle(pantalla,self.color,(self.pos_x-self.radio,self.pos_y-self.radio),self.radio)
 
     def mover(self,x_max=800,y_max=600):
         self.pos_x += self.vx
@@ -67,6 +67,13 @@ class Pelota:
         if self.pos_x < 0-self.radio*5:
             self.vx *= -1
             self.contadorDerecho +=1
+
+    def mostrar_marcador(self,pantalla):
+        fuente = pg.font.Font(None, 35)
+        jugador1 = fuente.render(str(self.contadorDerecho),0,(255,255,255))
+        jugador2 = fuente.render(str(self.contadorIzquierdo),0,(255,255,255))
+        pantalla.blit(jugador1,(200,50))
+        pantalla.blit(jugador2,(600,50))
 
 
 
